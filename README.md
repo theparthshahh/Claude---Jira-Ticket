@@ -4,7 +4,8 @@ Automated daily Jira report for **Parth Shah (parth@tagmango.com)** — fetches 
 
 ## What it does
 
-- Fetches all open Jira tickets (not Done / Closed / Resolved) reported by Parth
+- Fetches all Jira tickets **created the previous day** by Parth
+- Filters to tickets that are **not closed** (excludes Done / Closed / Resolved)
 - Classifies them into **Action Required** (high priority / overdue / nearing due date) and **For Visibility**
 - Prints a scannable, decision-focused report to stdout
 - Optionally saves the report to `reports/YYYY-MM-DD.txt`
