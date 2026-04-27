@@ -4,11 +4,15 @@ Automated daily Jira report for **Parth Shah (parth@tagmango.com)** — fetches 
 
 ## What it does
 
-- Fetches all Jira tickets **created the previous day** by Parth
-- Filters to tickets that are **not closed** (excludes Done / Closed / Resolved)
-- Classifies them into **Action Required** (high priority / overdue / nearing due date) and **For Visibility**
-- Prints a scannable, decision-focused report to stdout
-- Optionally saves the report to `reports/YYYY-MM-DD.txt`
+Every run covers **three scopes** in one report:
+
+| Scope | What it fetches |
+|-------|----------------|
+| **Today** | Tickets created on the report date — non-closed only |
+| **Yesterday** | Tickets created the day before the report date — non-closed only |
+| **Anchor date** | Tickets created on Apr 22, 2026 that are still unclosed (checked every day) |
+
+Within each scope, tickets are classified into **Action Required** (Highest/High priority, overdue, or due within 3 days) and **For Visibility** (everything else open).
 
 ## Setup
 
@@ -26,11 +30,14 @@ cp .env.example .env
 ## Usage
 
 ```bash
-# Run for today
+# Run for today (fetches today + yesterday + anchor date)
 python3 jira_daily_report.py
 
-# Run for a specific date
+# Run for a specific report date
 python3 jira_daily_report.py --date 2026-04-25
+
+# Override the anchor date
+python3 jira_daily_report.py --anchor 2026-04-22
 
 # Save report to reports/ directory
 python3 jira_daily_report.py --save
