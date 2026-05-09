@@ -1,0 +1,57 @@
+=================================================================
+  DAILY JIRA REPORT — April 25, 2026
+  Reporter : Parth Shah  (parth@tagmango.com)
+  Project  : Tagmango CS  |  tagmango-cs.atlassian.net
+=================================================================
+
+  Tickets created today : 0
+  Total open tickets    : 3
+  Needing action        : 3
+
+┌─────────────────────────────────────────────────────────────────┐
+│  🚨  ACTION REQUIRED  (Discuss in Call)                         │
+└─────────────────────────────────────────────────────────────────┘
+
+  1. Why flagged: high priority (HIGHEST) | needs CS details
+  [CS-2035](https://tagmango-cs.atlassian.net/browse/CS-2035) — Freedom Creator | Anisha | Unable to create service and access the dashboard
+  Priority   : 🔴 HIGHEST
+  Status     : Require Details from CS
+  Due Date   : No Due Date
+  Assignee   : Unassigned
+  Note       : Creator unable to create service; dashboard link flagged as unsecured network.
+
+  2. Why flagged: high priority | OVERDUE
+  [CS-2472](https://tagmango-cs.atlassian.net/browse/CS-2472) — Freedom Creator | Satyam | Not getting the accurate data using Webhooks
+  Priority   : 🟠 HIGH
+  Status     : In Development
+  Due Date   : Jul 14, 2025  ⚠️ OVERDUE by 285 days
+  Assignee   : Unassigned
+  Note       : Webhook data accuracy issue. Due date severely overdue — needs status update.
+
+  3. Why flagged: high priority | pending CS response
+  [CS-2346](https://tagmango-cs.atlassian.net/browse/CS-2346) — Email Broadcast Issue
+  Priority   : 🟠 HIGH
+  Status     : Require Details from CS
+  Due Date   : No Due Date
+  Assignee   : Unassigned
+  Note       : Broadcast showing "Delivered" but emails not received. Dump report shared.
+
+┌─────────────────────────────────────────────────────────────────┐
+│  👁️   FOR VISIBILITY  (No Immediate Action)                     │
+└─────────────────────────────────────────────────────────────────┘
+
+  ✅  No additional open tickets.
+  (CS-2029 — Workshop meeting mode bug — is in "Konnect with Kanishk" status,
+   treated as effectively resolved / done-category.)
+
+┌─────────────────────────────────────────────────────────────────┐
+│  ⚠️   RISK SUMMARY                                              │
+└─────────────────────────────────────────────────────────────────┘
+
+  Overdue        : CS-2472  (285 days past due — Jul 14, 2025)
+  No due date    : CS-2035, CS-2346  ← Consider setting due dates
+  Blocked        : None detected
+
+=================================================================
+  Generated on 2026-04-25  |  Daily standup ready
+=================================================================
