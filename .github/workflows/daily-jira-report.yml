@@ -1,0 +1,57 @@
+name: Daily Jira Report
+
+on:
+  schedule:
+    # Runs every weekday at 9:00 AM IST (3:30 AM UTC)
+    - cron: "30 3 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      report_date:
+        description: "Date to generate report for (YYYY-MM-DD). Defaults to today."
+        required: false
+        default: ""
+
+jobs:
+  generate-report:
+    name: Generate & Commit Daily Jira Report
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Determine report date
+        id: date
+        run: |
+          if [ -n "${{ github.event.inputs.report_date }}" ]; then
+            echo "date=${{ github.event.inputs.report_date }}" >> $GITHUB_OUTPUT
+          else
+            echo "date=$(date -u '+%Y-%m-%d')" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate Jira report
+        env:
+          JIRA_DOMAIN:      tagmango-cs.atlassian.net
+          JIRA_EMAIL:       ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN:   ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_REPORTER_ID: ${{ secrets.JIRA_REPORTER_ID }}
+          OUTPUT_DIR:       reports
+        run: python scripts/daily_jira_report.py ${{ steps.date.outputs.date }}
+
+      - name: Commit report to repository
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/
+          git diff --cached --quiet || git commit -m "chore: daily Jira report for ${{ steps.date.outputs.date }}"
+          git push
